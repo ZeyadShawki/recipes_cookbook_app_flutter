@@ -162,7 +162,6 @@ class _SearchScreenState extends State<SearchScreen> {
             );
           },
           listener: (context,state){
-      print(state);
           },
         ),
     );

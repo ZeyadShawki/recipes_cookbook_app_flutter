@@ -239,49 +239,47 @@ class RecipeDetailsScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Expanded(
         child:  Expanded(
-          child:  Container(
-            child: Row(
-              children: [
-                Image(
-                  height: 80,
-                    width: 80,
-                    image: NetworkImage(
-                      'https://spoonacular.com/cdn/ingredients_100x100/${ingredients.image}',
-                    )),
-                 Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                 child:  Flexible(
-                   child: Text(ingredients.name,style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 15,
+          child:  Row(
+            children: [
+              Image(
+                height: 80,
+                  width: 80,
+                  image: NetworkImage(
+                    'https://spoonacular.com/cdn/ingredients_100x100/${ingredients.image}',
+                  )),
+               Padding(
+               padding: const EdgeInsets.symmetric(horizontal: 15.0),
+               child:  Flexible(
+                 child: Text(ingredients.name,style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
 
-              ),
-                   ),
+            ),
                  ),
                ),
-                  const Spacer(),
-                            Container(
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.grey.withOpacity(0.3),
+             ),
+                const Spacer(),
+                          Container(
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.grey.withOpacity(0.3),
 
-                  ),
-                  child: Row(
-                    children: [
-                      Text(
-                        ingredients.amount.toString(),
-                      ),
-                      const SizedBox(width: 10,),
-                      Text(
-                        ingredients.unit.toUpperCase(),
-                      overflow: TextOverflow.ellipsis,
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      ingredients.amount.toString(),
+                    ),
+                    const SizedBox(width: 10,),
+                    Text(
+                      ingredients.unit.toUpperCase(),
+                    overflow: TextOverflow.ellipsis,
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
         ),
       ),
