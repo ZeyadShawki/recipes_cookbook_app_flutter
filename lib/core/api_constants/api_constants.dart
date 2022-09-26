@@ -4,5 +4,8 @@ class ApiConstants{
  String searchPathMaker(String query){
    return '$baseurl/complexSearch?query=$query&apiKey=$apiKey';
  }
+ String getRecipeDetailsPath(int id){
+   return '$baseurl/$id/information?apiKey=$apiKey&includeNutrition=true';
+ }
 
 }

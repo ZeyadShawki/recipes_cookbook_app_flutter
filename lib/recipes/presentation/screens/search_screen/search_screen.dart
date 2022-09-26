@@ -4,6 +4,7 @@ import 'package:recipes_app_flutter/core/constants/app_colors.dart';
 import 'package:recipes_app_flutter/core/service_locater/sl.dart';
 import 'package:recipes_app_flutter/recipes/domain/entities/search_model.dart';
 import 'package:recipes_app_flutter/recipes/presentation/bloc/search_cubit/search_cubit.dart';
+import 'package:recipes_app_flutter/recipes/presentation/screens/details/details_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -57,7 +58,27 @@ class _SearchScreenState extends State<SearchScreen> {
                           ),
                         ),
                        const SizedBox(height: 20,),
-                          if(state is SearchErrorNoInternetConnectionState)...[
+                      if(searchController.text=='')...[
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height*0.68,
+                            child:  Center(child:  Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'Start Searching For Recipe',
+                                  style: TextStyle(
+                                      fontSize: 20
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 10,),
+                                Icon(Icons.search,size: 70,)
+                              ],
+                            ),))
+                        ],
+                        if(state is SearchErrorNoInternetConnectionState)...[
                             SizedBox(
                                 height: MediaQuery.of(context).size.height*0.68,
                                 child:  Center(child:  Column(
@@ -122,7 +143,11 @@ class _SearchScreenState extends State<SearchScreen> {
                                ),
                              itemBuilder: (BuildContext context, int index)
                              {
-                               return gridItem(state.recipesList[index]);
+                               return InkWell(
+                                   onTap: (){
+                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>RecipeDetailsScreen(id: state.recipesList[index].id)));
+                                   },
+                                   child: gridItem(state.recipesList[index]));
                              },
                              itemCount: state.recipesList.length,
                          ),
@@ -137,7 +162,7 @@ class _SearchScreenState extends State<SearchScreen> {
             );
           },
           listener: (context,state){
-
+      print(state);
           },
         ),
     );

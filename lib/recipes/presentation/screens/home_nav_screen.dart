@@ -1,7 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:recipes_app_flutter/core/constants/app_colors.dart';
-import 'package:recipes_app_flutter/recipes/presentation/screens/home_recipes_screen.dart';
+import 'package:recipes_app_flutter/recipes/presentation/screens/home/home_recipes_screen.dart';
 import 'package:recipes_app_flutter/recipes/presentation/screens/search_screen/search_screen.dart';
 import 'package:recipes_app_flutter/recipes/presentation/screens/settings/settings_screen.dart';
 

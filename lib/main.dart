@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recipes_app_flutter/core/service_locater/sl.dart';
-import 'package:recipes_app_flutter/recipes/presentation/screens/home/home_nav_screen.dart';
+import 'package:recipes_app_flutter/recipes/presentation/screens/home_nav_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
  ServiceLocater().init();
-
-  SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
+ SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.dark,
