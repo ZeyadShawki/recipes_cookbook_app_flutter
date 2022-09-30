@@ -1,11 +1,15 @@
 class ApiConstants{
- static const String  apiKey='bd4b650d4f8e49e7b259055a9b062c85';
+ static const String  apiKey='get your api key and placed here';
+ //
  static const String  baseurl='https://api.spoonacular.com/recipes';
  String searchPathMaker(String query){
    return '$baseurl/complexSearch?query=$query&apiKey=$apiKey';
  }
  String getRecipeDetailsPath(int id){
    return '$baseurl/$id/information?apiKey=$apiKey&includeNutrition=true';
+ }
+ String getRandomRecipePath(){
+   return '$baseurl/random?apiKey=$apiKey&includeNutrition=true';
  }
 
 }

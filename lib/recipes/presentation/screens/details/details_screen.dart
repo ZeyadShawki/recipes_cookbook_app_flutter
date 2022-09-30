@@ -48,7 +48,7 @@ class RecipeDetailsScreen extends StatelessWidget {
                              width: 40,
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(15),
-                               color: Colors.white,
+                               color: Colors.greenAccent,
                              ),
                              child: const Icon(Icons.arrow_back_ios_new_outlined),
                        ),
@@ -237,51 +237,56 @@ class RecipeDetailsScreen extends StatelessWidget {
   Widget ingredientsListView(Ingredients ingredients){
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Expanded(
-        child:  Expanded(
-          child:  Row(
-            children: [
-              Image(
-                height: 80,
-                  width: 80,
-                  image: NetworkImage(
-                    'https://spoonacular.com/cdn/ingredients_100x100/${ingredients.image}',
-                  )),
-               Padding(
-               padding: const EdgeInsets.symmetric(horizontal: 15.0),
-               child:  Flexible(
-                 child: Text(ingredients.name,style: const TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          if(ingredients.image!='')...[
+          Image(
+            height: 80,
+              width: 80,
+              image: NetworkImage(
+                'https://spoonacular.com/cdn/ingredients_100x100/${ingredients.image}',
+              )),]else...[
+    const Image(
+    height: 80,
+    width: 80,
+    image: NetworkImage(
+    'https://www.foodingredientfacts.org/wp-content/uploads/2017/11/AdobeStock_49033437-dont-fear-ingredients-in-your-food-768x587.jpeg',
+    )),
+    ],
+
+            Flexible(
+              child:  Text(ingredients.name,style: const TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 15,
+
+        ),
+           ),
+            ),
+            const Spacer(),
+                      Container(
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.grey.withOpacity(0.3),
 
             ),
-                 ),
-               ),
-             ),
-                const Spacer(),
-                          Container(
-                padding: const EdgeInsets.all(3),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.grey.withOpacity(0.3),
-
+            child: Row(
+              children: [
+                Text(
+                  ingredients.amount.toString(),
                 ),
-                child: Row(
-                  children: [
-                    Text(
-                      ingredients.amount.toString(),
-                    ),
-                    const SizedBox(width: 10,),
-                    Text(
-                      ingredients.unit.toUpperCase(),
-                    overflow: TextOverflow.ellipsis,
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+                const SizedBox(width: 10,),
+                Text(
+                  ingredients.unit.toUpperCase(),
+                overflow: TextOverflow.ellipsis,
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

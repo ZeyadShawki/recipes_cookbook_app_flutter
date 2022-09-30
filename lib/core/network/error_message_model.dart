@@ -9,8 +9,8 @@ class ErrorMessageModel implements Exception{
 });
 
   factory ErrorMessageModel.fromJson(Map<String,dynamic> json)=>ErrorMessageModel(
-      message: json['status'],
+      message: json['message'],
       statusCode: json['code'],
-      success: json['message']);
+      success: json['success']??false);
 
 }

@@ -134,9 +134,11 @@ class _SearchScreenState extends State<SearchScreen> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height*0.68,
                             child: GridView.builder(
+
                               physics: const BouncingScrollPhysics(),
                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                 crossAxisCount: 2,
+
+                                 crossAxisCount:  2,
                                    mainAxisExtent: 180,
                                    crossAxisSpacing: 5,
                                    mainAxisSpacing: 5

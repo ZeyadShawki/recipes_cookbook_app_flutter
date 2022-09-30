@@ -4,6 +4,7 @@ import 'package:recipes_app_flutter/core/error/failure.dart';
 import 'package:recipes_app_flutter/core/error/server_exception.dart';
 import 'package:recipes_app_flutter/recipes/data/remote_data_sources/remote_data_source.dart';
 import 'package:recipes_app_flutter/recipes/domain/base_repostery/repostery.dart';
+import 'package:recipes_app_flutter/recipes/domain/entities/popular_recipe.dart';
 import 'package:recipes_app_flutter/recipes/domain/entities/recipe_deatails.dart';
 import 'package:recipes_app_flutter/recipes/domain/entities/search_model.dart';
 
@@ -33,6 +34,21 @@ class Repostery extends BaseRecipeRepostery{
     if(await _networkInfo.isConnected){
       try{
         final result=await remoteDataSource.getRecipeDetails(id);
+        return Right(result);
+      }on ServerExcepetion catch(e){
+        return Left(ServerFailure(e.errorMessageModel.message));
+      }
+    }else{
+      return const Left(ServerFailure(noInternetconnectoion));
+
+    }
+  }
+
+  @override
+  Future<Either<Failure,List<PopularRecipe>>> getPopulerRecipe()async{
+    if(await _networkInfo.isConnected){
+      try{
+        final result=await remoteDataSource.getPopulerRecipe();
         return Right(result);
       }on ServerExcepetion catch(e){
         return Left(ServerFailure(e.errorMessageModel.message));
